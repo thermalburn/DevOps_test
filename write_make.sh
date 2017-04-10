@@ -14,6 +14,7 @@ DB_NAME ?= test
 NEW_DB_SQL ?= $(shell cat new_db.sql)
 RUN_SQL ?= $(shell cat run.sql)
 LSB_RELEASE ?= $(shell lsb_release -cs)
+
 db:
 # Add docker repository
 	apt-get install apt-transport-https ca-certificates curl software-properties-common
@@ -35,13 +36,13 @@ db:
 start:
 # Start container
 	docker start $(CONTAINER)
+
 stop:
 # Start container
 	docker stop $(CONTAINER)
+
 rm:
 # Remove container
 	docker stop $(CONTAINER)
 	docker rm $(CONTAINER)
 EOF
-
-cat $MAKEFILE
