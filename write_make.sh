@@ -2,7 +2,7 @@ MAKEFILE="${1:-Makefile}"
 
 cat << 'EOF' >> $MAKEFILE
 
-.PHONY: db db_start db_stop test
+.PHONY: db db_start db_stop db_rm
 
 # Environment variable can be set using -e VARIABLE_NAME=VALUE
 
@@ -33,15 +33,15 @@ db:
 # Run custom SQL
 	docker exec -it $(CONTAINER)  psql -U docker -c "$(RUN_SQL)"
 
-start:
+db_start:
 # Start container
 	docker start $(CONTAINER)
 
-stop:
+db_stop:
 # Start container
 	docker stop $(CONTAINER)
 
-rm:
+db_rm:
 # Remove container
 	docker stop $(CONTAINER)
 	docker rm $(CONTAINER)
