@@ -1,3 +1,6 @@
+#!/bin/bash
+# Creates Makefile for Docker with PostgreSQL
+# Use 1st argument for different Makefile name
 MAKEFILE="${1:-Makefile}"
 
 cat << 'EOF' >> $MAKEFILE
